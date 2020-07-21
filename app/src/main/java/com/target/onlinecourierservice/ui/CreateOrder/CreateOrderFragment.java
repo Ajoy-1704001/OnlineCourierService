@@ -1,6 +1,7 @@
 package com.target.onlinecourierservice.ui.CreateOrder;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -13,16 +14,29 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.viewpager.widget.ViewPager;
 
+import com.google.android.gms.common.internal.Objects;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.target.onlinecourierservice.ConfirmationActivity;
 import com.target.onlinecourierservice.Global;
 import com.target.onlinecourierservice.R;
 import com.target.onlinecourierservice.ViewPageAdapter;
+import com.target.onlinecourierservice.model.ParcelModel;
+import com.target.onlinecourierservice.ui.gallery.GalleryFragment;
+import com.target.onlinecourierservice.ui.home.HomeFragment;
 
 public class CreateOrderFragment extends Fragment {
 
@@ -46,6 +60,22 @@ public class CreateOrderFragment extends Fragment {
             }
         });
 
+        FirebaseDatabase database=FirebaseDatabase.getInstance();
+        final DatabaseReference databaseReference=database.getReference();
+        databaseReference.child("Parcel_No").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Global.ParcelId=snapshot.getValue(String.class);
+                Toast.makeText(getActivity(),Global.ParcelId,Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
 
         tabLayout=root.findViewById(R.id.tabMode);
         viewPager=root.findViewById(R.id.viewer);
@@ -57,9 +87,9 @@ public class CreateOrderFragment extends Fragment {
         viewPageAdapter=new ViewPageAdapter(getChildFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
 
         viewPageAdapter.AddFragment(new SenderFragment(),"Sender");
-        viewPageAdapter.AddFragment(new ReceiverFragment(),"Receiver");
-        viewPageAdapter.AddFragment(new ProductDetailsFragment(),"Product");
-        viewPageAdapter.AddFragment(new PaymentFragment(),"Payment");
+        //viewPageAdapter.AddFragment(new ReceiverFragment(),"Receiver");
+        //viewPageAdapter.AddFragment(new ProductDetailsFragment(),"Product");
+        //viewPageAdapter.AddFragment(new PaymentFragment(),"Payment");
         viewPager.setAdapter(viewPageAdapter);
         tabLayout.setupWithViewPager(viewPager);
 
@@ -95,10 +125,12 @@ public class CreateOrderFragment extends Fragment {
                         Snackbar.make(root,"Please Select Thana",Snackbar.LENGTH_SHORT).show();
                     }
                     else{
+                        viewPageAdapter.AddFragment(new ReceiverFragment(),"Receiver");
+                        viewPageAdapter.notifyDataSetChanged();
                         viewPager.setCurrentItem(1);
                         s1.setImageResource(R.drawable.icons8_user_location_100px_1);
                         s2.setImageResource(R.drawable.icons8_address_100px);
-
+                        Toast.makeText(getActivity(),Global.senderCity,Toast.LENGTH_SHORT).show();
                     }
                 }
                 else if(tabLayout.getSelectedTabPosition()==1){
@@ -121,10 +153,11 @@ public class CreateOrderFragment extends Fragment {
                         Snackbar.make(root,"Please Select Thana",Snackbar.LENGTH_SHORT).show();
                     }
                     else{
+                        viewPageAdapter.AddFragment(new ProductDetailsFragment(),"Product");
+                        viewPageAdapter.notifyDataSetChanged();
                         viewPager.setCurrentItem(2);
                         s2.setImageResource(R.drawable.icons8_address_100px_2);
                         s3.setImageResource(R.drawable.icons8_product_100px_1);
-
                     }
                 }
                 else if(tabLayout.getSelectedTabPosition()==2){
@@ -156,11 +189,52 @@ public class CreateOrderFragment extends Fragment {
                     else if (weight==R.id.w5){
                         Global.weight="w5";
                     }
+                    viewPageAdapter.AddFragment(new PaymentFragment(),"Payment");
+                    viewPageAdapter.notifyDataSetChanged();
                     viewPager.setCurrentItem(3);
                     s3.setImageResource(R.drawable.icons8_product_100px);
                     s4.setImageResource(R.drawable.icons8_mobile_payment_100px_1);
                     next.setText("Request PickUp");
                 }
+                else if(tabLayout.getSelectedTabPosition()==3){
+                    if(Global.paymentMethod.equals("Mobile Banking")){
+                        if(Global.txID.getText().toString().length()==10){
+                            ParcelModel parcelModel=new ParcelModel("userid12345",Global.senderName.getText().toString(),Global.senderMobile.getText().toString(),Global.senderAddress.getText().toString(),Global.senderCity,Global.senderThana,Global.pickupInstruction.getText().toString(),Global.repName.getText().toString(),Global.repMobile.getText().toString(),
+                                    Global.repAddress.getText().toString(),Global.repCity,Global.repThana,Global.deliveyInstruction.getText().toString(),Global.packageType,Global.size,Global.weight,Global.paymentMethod,Global.totalMoney,Global.txID.getText().toString());
+                            databaseReference.child("Parcel").child("MobileBanking").child(String.valueOf(Integer.parseInt(Global.ParcelId)+1)).setValue(parcelModel).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    databaseReference.child("Parcel_No").setValue(String.valueOf(Integer.parseInt(Global.ParcelId)+1));
+                                    Intent intent = new Intent(getActivity(), ConfirmationActivity.class);
+                                    startActivity(intent);
+                                    getActivity().finish();
+                                }
+                            });
+                        }
+                        else{
+                            Global.txID.setError("Invalid TxnID");
+                        }
+                    }
+                    else if (Global.paymentMethod.equals("Cash On Delivery")){
+
+                        ParcelModel parcelModel=new ParcelModel("userid12345",Global.senderName.getText().toString(),Global.senderMobile.getText().toString(),Global.senderAddress.getText().toString(),Global.senderCity,Global.senderThana,Global.pickupInstruction.getText().toString(),Global.repName.getText().toString(),Global.repMobile.getText().toString(),
+                                Global.repAddress.getText().toString(),Global.repCity,Global.repThana,Global.deliveyInstruction.getText().toString(),Global.packageType,Global.size,Global.weight,Global.paymentMethod,Global.totalMoney,"xxxxxxxxxxx");
+                        databaseReference.child("Parcel").child("COD").child(String.valueOf(Integer.parseInt(Global.ParcelId)+1)).setValue(parcelModel).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                databaseReference.child("Parcel_No").setValue(String.valueOf(Integer.parseInt(Global.ParcelId)+1));
+                                Intent intent = new Intent(getActivity(), ConfirmationActivity.class);
+                                startActivity(intent);
+                                getActivity().finish();
+
+                            }
+                        });
+
+                    }
+                }
+
+
+
             }
         });
 

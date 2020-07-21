@@ -16,6 +16,10 @@
         <item>Box Packaging</item>
         <item>Glass Packaging</item>
     </string-array>
+    <string-array name="payment_method">
+        <item>Mobile Banking</item>
+        <item>Cash On Delivery</item>
+    </string-array>
 
 
     <string-array name="thana_array">
@@ -25,11 +29,10 @@
 
     <string-array name="city_array">
         <item>Select City</item>
-        <item >Dhaka</item>
-        <item >Chittagong</item>
-        <item >Feni</item>
+        <item>Dhaka</item>
+        <item>Chittagong</item>
+        <item>Feni</item>
     </string-array>
-
 
 
     <string-array name="Dhaka">
@@ -48,7 +51,6 @@
     </string-array>
 
 
-
     <string-array name="Mirpur">
         <item>Select Area</item>
         <item>Mirpur-1</item>
@@ -65,7 +67,6 @@
         <item>Nasirabad</item>
         <item>2 no. gate</item>
     </string-array>
-
 
 
 </resources>

@@ -58,7 +58,7 @@ public class ReceiverFragment extends Fragment {
                         thanaAdapter=ArrayAdapter.createFromResource(getActivity(),R.array.Dhaka,R.layout.spinner);
                         Global.repCity= (String) parent.getItemAtPosition(position);
                         break;
-                    case  2:
+                    case 2:
                         thanaAdapter=ArrayAdapter.createFromResource(getActivity(),R.array.Chittagong,R.layout.spinner);
                         Global.repCity= (String) parent.getItemAtPosition(position);
                         break;

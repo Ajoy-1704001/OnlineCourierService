@@ -5,6 +5,9 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 public class Global {
+    public static String ParcelId;
+
+
     public static EditText senderName;
     public static EditText senderMobile;
     public static EditText senderAddress;
@@ -25,5 +28,11 @@ public class Global {
     public static String weight;
     public static RadioGroup sizeGroup;
     public static RadioGroup weightGroup;
+
+
+    public static String paymentMethod;
+    public static String totalMoney;
+    public static EditText txID;
+
 
 }
