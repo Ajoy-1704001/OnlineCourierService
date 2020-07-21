@@ -1,0 +1,71 @@
+<resources>
+    <string name="app_name">Online Courier Service</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Profile</string>
+    <string name="menu_slideshow">Create Order</string>
+
+
+    <string-array name="product_type">
+        <item>Box Packaging</item>
+        <item>Glass Packaging</item>
+    </string-array>
+
+
+    <string-array name="thana_array">
+        <item>Select Thana</item>
+    </string-array>
+
+
+    <string-array name="city_array">
+        <item>Select City</item>
+        <item >Dhaka</item>
+        <item >Chittagong</item>
+        <item >Feni</item>
+    </string-array>
+
+
+
+    <string-array name="Dhaka">
+        <item>Select Thana</item>
+        <item>Mirpur</item>
+        <item>Mohammadpur</item>
+        <item>Khilgaon</item>
+        <item>Tejgaon</item>
+    </string-array>
+    <string-array name="Chittagong">
+        <item>Select Thana</item>
+        <item>Agrabad</item>
+        <item>Nasirabad</item>
+        <item>Oxygen</item>
+        <item>Raujan</item>
+    </string-array>
+
+
+
+    <string-array name="Mirpur">
+        <item>Select Area</item>
+        <item>Mirpur-1</item>
+        <item>Mirpur-10</item>
+    </string-array>
+    <string-array name="Khilgaon">
+        <item>Select Area</item>
+        <item>Khilgaon</item>
+        <item>Tilpa-para</item>
+    </string-array>
+
+    <string-array name="Nasirabad">
+        <item>Select Area</item>
+        <item>Nasirabad</item>
+        <item>2 no. gate</item>
+    </string-array>
+
+
+
+</resources>

@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Product Details"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="15dp"/>
+
+   <ScrollView
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="vertical"
+           android:paddingStart="20dp"
+           android:paddingEnd="20dp">
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:orientation="vertical"
+               android:layout_marginTop="8dp">
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="Package Type*"/>
+               <Spinner
+                   android:layout_marginTop="8dp"
+                   android:id="@+id/spinnerProductType"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:background="@drawable/spinner_bg"
+                   />
+           </LinearLayout>
+
+           <TextView
+               android:layout_marginTop="25dp"
+               android:layout_width="match_parent"
+               android:layout_height="1px"
+               android:text=" "
+               android:background="@color/grey"/>
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:orientation="vertical"
+               android:layout_marginTop="10dp">
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="Package Size*"/>
+
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="8dp"
+                   android:orientation="horizontal">
+                   <RadioGroup
+                       android:layout_width="0dp"
+                       android:layout_height="wrap_content"
+                       android:layout_weight="1"
+                       android:id="@+id/sizeGroup">
+                       <RadioButton
+                           android:id="@+id/size1"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:text="Under 1 sq Feet"
+                           />
+                       <RadioButton
+                           android:id="@+id/size2"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:text="1-2 sq Feet" />
+                       <RadioButton
+                           android:id="@+id/size3"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:text="1-2 sq Feet" />
+
+                   </RadioGroup>
+                   <LinearLayout
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:orientation="vertical">
+                       <TextView
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:text="+0"
+                           android:layout_margin="5dp"
+                           android:layout_gravity="end"/>
+                       <TextView
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:text="+10"
+                           android:layout_margin="6dp"/>
+                       <TextView
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:text="+20"
+                           android:layout_margin="5dp"/>
+                   </LinearLayout>
+
+               </LinearLayout>
+               <TextView
+                   android:layout_marginTop="25dp"
+                   android:layout_width="match_parent"
+                   android:layout_height="1px"
+                   android:text=" "
+                   android:background="@color/grey"/>
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:orientation="vertical"
+                   android:layout_marginTop="10dp">
+                   <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:text="Package Size*"/>
+
+                   <LinearLayout
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:layout_marginTop="8dp"
+                       android:orientation="horizontal">
+                       <RadioGroup
+                           android:layout_width="0dp"
+                           android:layout_height="wrap_content"
+                           android:layout_weight="1"
+                           android:id="@+id/weightGroup">
+                           <RadioButton
+                               android:id="@+id/w1"
+                               android:layout_width="match_parent"
+                               android:layout_height="wrap_content"
+                               android:text="Under 500 gm"
+                               />
+                           <RadioButton
+                               android:id="@+id/w2"
+                               android:layout_width="match_parent"
+                               android:layout_height="wrap_content"
+                               android:text="0.5-1 kg" />
+                           <RadioButton
+                               android:id="@+id/w3"
+                               android:layout_width="match_parent"
+                               android:layout_height="wrap_content"
+                               android:text="1-3 kg" />
+                           <RadioButton
+                               android:id="@+id/w4"
+                               android:layout_width="match_parent"
+                               android:layout_height="wrap_content"
+                               android:text="4-7 kg"
+                               />
+                           <RadioButton
+                               android:id="@+id/w5"
+                               android:layout_width="match_parent"
+                               android:layout_height="wrap_content"
+                               android:text="More than 7 kg"/>
+
+                       </RadioGroup>
+                       <LinearLayout
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:orientation="vertical">
+                           <TextView
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:text="+0"
+                               android:layout_margin="5dp"
+                               android:layout_gravity="end"/>
+                           <TextView
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:text="+5"
+                               android:layout_gravity="end"
+                               android:layout_margin="6dp"/>
+                           <TextView
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:text="+10"
+                               android:layout_margin="5dp"
+                               android:layout_marginTop="2dp"/>
+                           <TextView
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:text="+15"
+                               android:layout_marginStart="5dp"
+                               android:layout_marginLeft="5dp"
+                               android:layout_marginRight="5dp"
+                               android:layout_marginEnd="5dp"
+                               android:layout_marginTop="9dp"/>
+                           <TextView
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:text="+20"
+                               android:layout_marginLeft="5dp"
+                               android:layout_marginStart="5dp"
+                               android:layout_marginEnd="5dp"
+                               android:layout_marginRight="5dp"
+                               android:layout_marginTop="12dp"/>
+                       </LinearLayout>
+
+                   </LinearLayout>
+               </LinearLayout>
+
+           </LinearLayout>
+
+       </LinearLayout>
+
+   </ScrollView>
+
+
+
+
+</LinearLayout>
