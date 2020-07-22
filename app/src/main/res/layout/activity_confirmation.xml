@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:text="Go to Home"
         android:textColor="@color/white"
-        android:layout_margin="20dp"
+        android:layout_margin="25dp"
         android:id="@+id/back"
         android:background="@drawable/next_prev_button"/>
 

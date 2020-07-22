@@ -16,5 +16,9 @@
             android:id="@+id/nav_create_order"
             android:icon="@drawable/icons8_purchase_order_100px"
             android:title="@string/menu_slideshow" />
+        <item
+            android:id="@+id/nav_parcel_list"
+            android:icon="@drawable/icons8_tasklist_100px"
+            android:title="@string/menu_parcel_list" />
     </group>
 </menu>

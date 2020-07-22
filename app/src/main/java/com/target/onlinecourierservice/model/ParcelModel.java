@@ -20,11 +20,12 @@ public class ParcelModel {
     private String paymentMethod;
     private String totalAmount;
     private String TxdId;
+    private String Date;
 
     public ParcelModel() {
     }
 
-    public ParcelModel(String userId, String senderName, String senderPhone, String pickupAddress, String pickupCity, String pickupThana, String pickupInstructions, String recipientName, String recipientPhone, String recipientAddress, String recipientCity, String recipientThana, String deliveryInstructions, String packageType, String packageSize, String packageWeight, String paymentMethod, String totalAmount, String txdId) {
+    public ParcelModel(String userId, String senderName, String senderPhone, String pickupAddress, String pickupCity, String pickupThana, String pickupInstructions, String recipientName, String recipientPhone, String recipientAddress, String recipientCity, String recipientThana, String deliveryInstructions, String packageType, String packageSize, String packageWeight, String paymentMethod, String totalAmount, String txdId,String Date) {
         this.userId = userId;
         this.senderName = senderName;
         this.senderPhone = senderPhone;
@@ -44,6 +45,15 @@ public class ParcelModel {
         this.paymentMethod = paymentMethod;
         this.totalAmount = totalAmount;
         TxdId = txdId;
+        this.Date=Date;
+    }
+
+    public String getDate() {
+        return Date;
+    }
+
+    public void setDate(String date) {
+        Date = date;
     }
 
     public String getPackageType() {

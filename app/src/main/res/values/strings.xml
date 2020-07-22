@@ -10,6 +10,7 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Profile</string>
     <string name="menu_slideshow">Create Order</string>
+    <string name="menu_parcel_list">Parcel List</string>
 
 
     <string-array name="product_type">

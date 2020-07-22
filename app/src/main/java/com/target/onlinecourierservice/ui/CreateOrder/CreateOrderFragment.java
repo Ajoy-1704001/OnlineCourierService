@@ -38,6 +38,10 @@ import com.target.onlinecourierservice.model.ParcelModel;
 import com.target.onlinecourierservice.ui.gallery.GalleryFragment;
 import com.target.onlinecourierservice.ui.home.HomeFragment;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 public class CreateOrderFragment extends Fragment {
 
     private CreateOrderViewModel slideshowViewModel;
@@ -101,6 +105,7 @@ public class CreateOrderFragment extends Fragment {
                 return true;
             }
         });
+
 
         next.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -197,14 +202,17 @@ public class CreateOrderFragment extends Fragment {
                     next.setText("Request PickUp");
                 }
                 else if(tabLayout.getSelectedTabPosition()==3){
+                    @SuppressLint("SimpleDateFormat") DateFormat df = new SimpleDateFormat("EEE, d MMM yyyy, HH:mm");
+                    String Date = df.format(Calendar.getInstance().getTime());
                     if(Global.paymentMethod.equals("Mobile Banking")){
                         if(Global.txID.getText().toString().length()==10){
                             ParcelModel parcelModel=new ParcelModel("userid12345",Global.senderName.getText().toString(),Global.senderMobile.getText().toString(),Global.senderAddress.getText().toString(),Global.senderCity,Global.senderThana,Global.pickupInstruction.getText().toString(),Global.repName.getText().toString(),Global.repMobile.getText().toString(),
-                                    Global.repAddress.getText().toString(),Global.repCity,Global.repThana,Global.deliveyInstruction.getText().toString(),Global.packageType,Global.size,Global.weight,Global.paymentMethod,Global.totalMoney,Global.txID.getText().toString());
-                            databaseReference.child("Parcel").child("MobileBanking").child(String.valueOf(Integer.parseInt(Global.ParcelId)+1)).setValue(parcelModel).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    Global.repAddress.getText().toString(),Global.repCity,Global.repThana,Global.deliveyInstruction.getText().toString(),Global.packageType,Global.size,Global.weight,Global.paymentMethod,Global.totalMoney,Global.txID.getText().toString(),Date);
+                            databaseReference.child("Parcel").child(String.valueOf(Integer.parseInt(Global.ParcelId)+1)).setValue(parcelModel).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
                                     databaseReference.child("Parcel_No").setValue(String.valueOf(Integer.parseInt(Global.ParcelId)+1));
+                                    databaseReference.child("Parcel_Status").child(String.valueOf(Integer.parseInt(Global.ParcelId)+1)).setValue("Pending");
                                     Intent intent = new Intent(getActivity(), ConfirmationActivity.class);
                                     startActivity(intent);
                                     getActivity().finish();
@@ -218,11 +226,12 @@ public class CreateOrderFragment extends Fragment {
                     else if (Global.paymentMethod.equals("Cash On Delivery")){
 
                         ParcelModel parcelModel=new ParcelModel("userid12345",Global.senderName.getText().toString(),Global.senderMobile.getText().toString(),Global.senderAddress.getText().toString(),Global.senderCity,Global.senderThana,Global.pickupInstruction.getText().toString(),Global.repName.getText().toString(),Global.repMobile.getText().toString(),
-                                Global.repAddress.getText().toString(),Global.repCity,Global.repThana,Global.deliveyInstruction.getText().toString(),Global.packageType,Global.size,Global.weight,Global.paymentMethod,Global.totalMoney,"xxxxxxxxxxx");
-                        databaseReference.child("Parcel").child("COD").child(String.valueOf(Integer.parseInt(Global.ParcelId)+1)).setValue(parcelModel).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                Global.repAddress.getText().toString(),Global.repCity,Global.repThana,Global.deliveyInstruction.getText().toString(),Global.packageType,Global.size,Global.weight,Global.paymentMethod,Global.totalMoney,"xxxxxxxxxxx",Date);
+                        databaseReference.child("Parcel").child(String.valueOf(Integer.parseInt(Global.ParcelId)+1)).setValue(parcelModel).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
                                 databaseReference.child("Parcel_No").setValue(String.valueOf(Integer.parseInt(Global.ParcelId)+1));
+                                databaseReference.child("Parcel_Status").child(String.valueOf(Integer.parseInt(Global.ParcelId)+1)).setValue("Pending");
                                 Intent intent = new Intent(getActivity(), ConfirmationActivity.class);
                                 startActivity(intent);
                                 getActivity().finish();
