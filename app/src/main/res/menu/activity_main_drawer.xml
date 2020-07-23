@@ -20,5 +20,9 @@
             android:id="@+id/nav_parcel_list"
             android:icon="@drawable/icons8_tasklist_100px"
             android:title="@string/menu_parcel_list" />
+        <item
+            android:id="@+id/nav_Shop"
+            android:icon="@drawable/ic_baseline_shopping_basket_24"
+            android:title="@string/menu_shop" />
     </group>
 </menu>

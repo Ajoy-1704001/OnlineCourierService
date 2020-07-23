@@ -6,6 +6,7 @@
     <color name="LogoYellow">#EA9F1D</color>
     <color name="MainThemeColor">#050D1E</color>
     <color name="white">#FFFFFF</color>
-    <color name="grey">#AEAFB1</color>
+    <color name="grey">#A1A1A3</color>
     <color name="greyBlue">#E9E8FF</color>
+    <color name="greyDeep">#868687</color>
 </resources>
