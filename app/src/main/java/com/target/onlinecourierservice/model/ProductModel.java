@@ -4,6 +4,7 @@ public class ProductModel {
     private String ProductId;
     private String ProductName;
     private String ProductMerchant;
+    private String MerchantID;
     private String ProductPrice;
     private String ProductImage;
 
@@ -11,12 +12,21 @@ public class ProductModel {
 
     }
 
-    public ProductModel(String productId, String productName, String productMerchant, String productPrice, String productImage) {
+    public ProductModel(String productId, String productName, String productMerchant, String merchantID, String productPrice, String productImage) {
         ProductId = productId;
         ProductName = productName;
         ProductMerchant = productMerchant;
+        MerchantID = merchantID;
         ProductPrice = productPrice;
         ProductImage = productImage;
+    }
+
+    public String getMerchantID() {
+        return MerchantID;
+    }
+
+    public void setMerchantID(String merchantID) {
+        MerchantID = merchantID;
     }
 
     public String getProductId() {

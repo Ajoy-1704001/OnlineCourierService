@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -14,7 +15,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.firebase.FirebaseError;
+import com.target.onlinecourierservice.Global;
 import com.target.onlinecourierservice.R;
+import com.target.onlinecourierservice.model.CartProduct;
 import com.target.onlinecourierservice.model.ParcelDisplay;
 import com.target.onlinecourierservice.model.ProductModel;
 
@@ -54,6 +58,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.Datahold
                 TextView pName=(TextView)bottomSheetDialog.findViewById(R.id.p_name);
                 TextView pManu=(TextView)bottomSheetDialog.findViewById(R.id.manu);
                 TextView pPrice=(TextView)bottomSheetDialog.findViewById(R.id.p_price);
+                Button add=(Button)bottomSheetDialog.findViewById(R.id.add);
                 final TextView Quantity=(TextView)bottomSheetDialog.findViewById(R.id.quantity);
                 ImageView img=(ImageView)bottomSheetDialog.findViewById(R.id.p_image);
                 ImageButton d=(ImageButton)bottomSheetDialog.findViewById(R.id.d);
@@ -82,6 +87,14 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.Datahold
                 pManu.setText(productModel.getProductMerchant());
                 pPrice.setText(productModel.getProductPrice());
                 Glide.with(mContext).load(productModel.getProductImage()).into(img);
+
+                add.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                       // Global.cartProducts.add(new CartProduct(productModel.getProductId(),productModel.getMerchantID(),productModel.getProductMerchant(),productModel.getProductName()));
+
+                    }
+                });
 
 
 

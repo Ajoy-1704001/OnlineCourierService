@@ -99,6 +99,7 @@
         </LinearLayout>
     </LinearLayout>
     <Button
+        android:id="@+id/add"
         android:text="Add to Cart"
         android:textAllCaps="false"
         android:layout_width="match_parent"

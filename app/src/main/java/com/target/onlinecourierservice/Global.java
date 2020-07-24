@@ -4,6 +4,10 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import com.target.onlinecourierservice.model.CartProduct;
+
+import java.util.ArrayList;
+
 public class Global {
     public static String ParcelId;
 
@@ -33,6 +37,8 @@ public class Global {
     public static String paymentMethod;
     public static String totalMoney;
     public static EditText txID;
+
+    public static ArrayList<CartProduct>cartProducts;
 
 
 }
