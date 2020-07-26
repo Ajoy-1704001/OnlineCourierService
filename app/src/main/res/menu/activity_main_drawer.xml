@@ -9,10 +9,6 @@
             android:icon="@drawable/icons8_home_100px"
             android:title="@string/menu_home" />
         <item
-            android:id="@+id/nav_profile"
-            android:icon="@drawable/icons8_gender_neutral_user_100px"
-            android:title="@string/menu_gallery" />
-        <item
             android:id="@+id/nav_create_order"
             android:icon="@drawable/icons8_purchase_order_100px"
             android:title="@string/menu_slideshow" />
@@ -24,5 +20,9 @@
             android:id="@+id/nav_Shop"
             android:icon="@drawable/ic_baseline_shopping_basket_24"
             android:title="@string/menu_shop" />
+        <item
+            android:id="@+id/nav_faq"
+            android:icon="@drawable/icons8_info_100px"
+            android:title="@string/menu_faq" />
     </group>
 </menu>

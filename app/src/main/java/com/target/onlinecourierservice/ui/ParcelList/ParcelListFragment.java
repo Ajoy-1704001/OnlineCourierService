@@ -16,6 +16,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -36,6 +38,8 @@ public class ParcelListFragment extends Fragment {
     RecyclerView recyclerView;
     ParcelAdapter listAdapter;
     ArrayList<ParcelDisplay>parcelDisplayArrayList=new ArrayList<>();
+    private FirebaseAuth mAuth;
+    private FirebaseUser currentUser;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -50,7 +54,10 @@ public class ParcelListFragment extends Fragment {
             }
         });
 
-        final String userID="userid12345";//Here userid will be auth uid
+        mAuth=FirebaseAuth.getInstance();
+        currentUser=mAuth.getCurrentUser();
+
+        final String userID=currentUser.getUid();
 
         recyclerView=root.findViewById(R.id.recyclerView);
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getActivity());
@@ -73,7 +80,6 @@ public class ParcelListFragment extends Fragment {
                                     parcelDisplayArrayList.add(new ParcelDisplay(keyNode.getKey(),parcelModel.getDate(),status));
                                     listAdapter.notifyDataSetChanged();
                                 }
-
                                 @Override
                                 public void onCancelled(@NonNull DatabaseError error) {
 

@@ -1,4 +1,4 @@
-package com.target.onlinecourierservice.ui.gallery;
+package com.target.onlinecourierservice.ui.faq;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,17 +14,17 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.target.onlinecourierservice.R;
 
-public class GalleryFragment extends Fragment {
+public class FaqFragment extends Fragment {
 
-    private GalleryViewModel galleryViewModel;
+    private FaqViewModel faqViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        galleryViewModel =
-                ViewModelProviders.of(this).get(GalleryViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_profile, container, false);
+        faqViewModel =
+                ViewModelProviders.of(this).get(FaqViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_faq, container, false);
         final TextView textView = root.findViewById(R.id.text_gallery);
-        galleryViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        faqViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

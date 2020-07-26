@@ -1,14 +1,14 @@
-package com.target.onlinecourierservice.ui.gallery;
+package com.target.onlinecourierservice.ui.faq;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class GalleryViewModel extends ViewModel {
+public class FaqViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public GalleryViewModel() {
+    public FaqViewModel() {
         mText = new MutableLiveData<>();
         mText.setValue("This is gallery fragment");
     }

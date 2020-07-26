@@ -14,17 +14,16 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.viewpager.widget.ViewPager;
 
-import com.google.android.gms.common.internal.Objects;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -35,8 +34,6 @@ import com.target.onlinecourierservice.Global;
 import com.target.onlinecourierservice.R;
 import com.target.onlinecourierservice.ViewPageAdapter;
 import com.target.onlinecourierservice.model.ParcelModel;
-import com.target.onlinecourierservice.ui.gallery.GalleryFragment;
-import com.target.onlinecourierservice.ui.home.HomeFragment;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -50,10 +47,12 @@ public class CreateOrderFragment extends Fragment {
     private ViewPageAdapter viewPageAdapter;
     Button next;
     ImageView s1,s2,s3,s4;
+    private FirebaseAuth mAuth;
+    private FirebaseUser currentUser;
 
     @SuppressLint("ClickableViewAccessibility")
     public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
+                             final ViewGroup container, Bundle savedInstanceState) {
         slideshowViewModel =
                 ViewModelProviders.of(this).get(CreateOrderViewModel.class);
         final View root = inflater.inflate(R.layout.fragment_create_order, container, false);
@@ -64,13 +63,15 @@ public class CreateOrderFragment extends Fragment {
             }
         });
 
+        mAuth=FirebaseAuth.getInstance();
+        currentUser=mAuth.getCurrentUser();
+
         FirebaseDatabase database=FirebaseDatabase.getInstance();
         final DatabaseReference databaseReference=database.getReference();
         databaseReference.child("Parcel_No").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Global.ParcelId=snapshot.getValue(String.class);
-                Toast.makeText(getActivity(),Global.ParcelId,Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -206,7 +207,7 @@ public class CreateOrderFragment extends Fragment {
                     String Date = df.format(Calendar.getInstance().getTime());
                     if(Global.paymentMethod.equals("Mobile Banking")){
                         if(Global.txID.getText().toString().length()==10){
-                            ParcelModel parcelModel=new ParcelModel("userid12345",Global.senderName.getText().toString(),Global.senderMobile.getText().toString(),Global.senderAddress.getText().toString(),Global.senderCity,Global.senderThana,Global.pickupInstruction.getText().toString(),Global.repName.getText().toString(),Global.repMobile.getText().toString(),
+                            ParcelModel parcelModel=new ParcelModel(currentUser.getUid(),Global.senderName.getText().toString(),Global.senderMobile.getText().toString(),Global.senderAddress.getText().toString(),Global.senderCity,Global.senderThana,Global.pickupInstruction.getText().toString(),Global.repName.getText().toString(),Global.repMobile.getText().toString(),
                                     Global.repAddress.getText().toString(),Global.repCity,Global.repThana,Global.deliveyInstruction.getText().toString(),Global.packageType,Global.size,Global.weight,Global.paymentMethod,Global.totalMoney,Global.txID.getText().toString(),Date);
                             databaseReference.child("Parcel").child(String.valueOf(Integer.parseInt(Global.ParcelId)+1)).setValue(parcelModel).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
@@ -225,7 +226,7 @@ public class CreateOrderFragment extends Fragment {
                     }
                     else if (Global.paymentMethod.equals("Cash On Delivery")){
 
-                        ParcelModel parcelModel=new ParcelModel("userid12345",Global.senderName.getText().toString(),Global.senderMobile.getText().toString(),Global.senderAddress.getText().toString(),Global.senderCity,Global.senderThana,Global.pickupInstruction.getText().toString(),Global.repName.getText().toString(),Global.repMobile.getText().toString(),
+                        ParcelModel parcelModel=new ParcelModel(currentUser.getUid(),Global.senderName.getText().toString(),Global.senderMobile.getText().toString(),Global.senderAddress.getText().toString(),Global.senderCity,Global.senderThana,Global.pickupInstruction.getText().toString(),Global.repName.getText().toString(),Global.repMobile.getText().toString(),
                                 Global.repAddress.getText().toString(),Global.repCity,Global.repThana,Global.deliveyInstruction.getText().toString(),Global.packageType,Global.size,Global.weight,Global.paymentMethod,Global.totalMoney,"xxxxxxxxxxx",Date);
                         databaseReference.child("Parcel").child(String.valueOf(Integer.parseInt(Global.ParcelId)+1)).setValue(parcelModel).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override

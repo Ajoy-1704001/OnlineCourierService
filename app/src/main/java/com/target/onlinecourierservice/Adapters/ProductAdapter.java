@@ -1,6 +1,7 @@
 package com.target.onlinecourierservice.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.FirebaseError;
 import com.target.onlinecourierservice.Global;
 import com.target.onlinecourierservice.R;
+import com.target.onlinecourierservice.UserLoginActivity;
 import com.target.onlinecourierservice.model.CartProduct;
 import com.target.onlinecourierservice.model.ParcelDisplay;
 import com.target.onlinecourierservice.model.ProductModel;
@@ -92,6 +94,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.Datahold
                     @Override
                     public void onClick(View v) {
                        // Global.cartProducts.add(new CartProduct(productModel.getProductId(),productModel.getMerchantID(),productModel.getProductMerchant(),productModel.getProductName()));
+                        mContext.startActivity(new Intent(mContext, UserLoginActivity.class));
 
                     }
                 });

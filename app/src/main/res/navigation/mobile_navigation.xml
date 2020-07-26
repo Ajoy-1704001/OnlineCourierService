@@ -11,11 +11,6 @@
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
 
-    <fragment
-        android:id="@+id/nav_profile"
-        android:name="com.target.onlinecourierservice.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_profile" />
 
     <fragment
         android:id="@+id/nav_create_order"
@@ -32,4 +27,9 @@
         android:name="com.target.onlinecourierservice.ui.Shop.ShopFragment"
         android:label="@string/menu_shop"
         tools:layout="@layout/fragment_shop" />
+    <fragment
+        android:id="@+id/nav_faq"
+        android:name="com.target.onlinecourierservice.ui.faq.FaqFragment"
+        android:label="@string/menu_faq"
+        tools:layout="@layout/fragment_faq" />
 </navigation>
