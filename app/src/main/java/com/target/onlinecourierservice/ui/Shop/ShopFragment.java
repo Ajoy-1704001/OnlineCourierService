@@ -77,7 +77,7 @@ public class ShopFragment extends Fragment {
                             @Override
                             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
                                     if(value!=null){
-                                        productModels.add(new ProductModel(keyNode.getKey(),productAllData.getProduct_name(),value.getString("businessName"),productAllData.getId(),productAllData.getProduct_price(),productAllData.getImage_url()));
+                                        productModels.add(new ProductModel(keyNode.getKey(),productAllData.getProduct_name(),value.getString("businessName"),productAllData.getId(),productAllData.getProduct_price(),productAllData.getImage_url(),productAllData.getProduct_description(),productAllData.getProduct_discount_price(),productAllData.getProduct_discount_percentage()));
                                         gridAdapter.notifyDataSetChanged();
                                     }
                             }
@@ -119,7 +119,7 @@ public class ShopFragment extends Fragment {
                                         @Override
                                         public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
                                             if(value!=null){
-                                                productModels.add(new ProductModel(keyNode.getKey(),productAllData.getProduct_name(),value.getString("businessName"),productAllData.getId(),productAllData.getProduct_price(),productAllData.getImage_url()));
+                                                productModels.add(new ProductModel(keyNode.getKey(),productAllData.getProduct_name(),value.getString("businessName"),productAllData.getId(),productAllData.getProduct_price(),productAllData.getImage_url(),productAllData.getProduct_description(),productAllData.getProduct_discount_price(),productAllData.getProduct_discount_percentage()));
                                                 gridAdapter.notifyDataSetChanged();
                                             }
                                         }
@@ -146,7 +146,7 @@ public class ShopFragment extends Fragment {
                                         @Override
                                         public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
                                             if(value!=null){
-                                                productModels.add(new ProductModel(keyNode.getKey(),productAllData.getProduct_name(),value.getString("businessName"),productAllData.getId(),productAllData.getProduct_price(),productAllData.getImage_url()));
+                                                productModels.add(new ProductModel(keyNode.getKey(),productAllData.getProduct_name(),value.getString("businessName"),productAllData.getId(),productAllData.getProduct_price(),productAllData.getImage_url(),productAllData.getProduct_description(),productAllData.getProduct_discount_price(),productAllData.getProduct_discount_percentage()));
                                                 gridAdapter.notifyDataSetChanged();
                                             }
                                         }

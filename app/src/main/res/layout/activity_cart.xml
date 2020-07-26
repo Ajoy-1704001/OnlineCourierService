@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Cart"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cart"
+        android:textColor="@color/MainThemeColor"
+        android:layout_margin="20dp"
+        android:textSize="30sp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Shipping Address"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:textSize="25sp"
+        />
+    <EditText
+        android:layout_marginTop="8dp"
+        android:id="@+id/PersonName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edit_text_bg"
+        android:inputType="textPersonName"
+        android:padding="10dp"
+        android:hint="Enter Name"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"/>
+
+    <EditText
+        android:layout_marginTop="8dp"
+        android:id="@+id/PersonAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edit_text_bg"
+        android:inputType="textPostalAddress"
+        android:padding="10dp"
+        android:hint="Enter Shipping Address"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp">
+        <Spinner
+            android:layout_marginTop="8dp"
+            android:id="@+id/spinnerCity"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/spinner_bg"
+            android:layout_marginRight="4dp"
+            />
+        <Spinner
+            android:layout_marginTop="8dp"
+            android:id="@+id/spinnerThana"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/spinner_bg"
+            />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/next"
+        android:layout_margin="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/LogoYellow"
+        android:textAllCaps="false"
+        android:text="Proceed to Checkout"
+        android:background="@drawable/next_prev_button"/>
+
+</LinearLayout>

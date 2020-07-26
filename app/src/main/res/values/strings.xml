@@ -12,6 +12,7 @@
     <string name="menu_slideshow">Create Order</string>
     <string name="menu_parcel_list">Parcel List</string>
     <string name="menu_shop">Shop</string>
+    <string name="menu_cart">Cart</string>
 
 
     <string-array name="product_type">
@@ -69,6 +70,11 @@
         <item>Nasirabad</item>
         <item>2 no. gate</item>
     </string-array>
+
+
+
+
+
 
 
 </resources>

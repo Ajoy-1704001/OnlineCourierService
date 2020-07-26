@@ -1,17 +1,20 @@
 package com.target.onlinecourierservice.model;
 
 public class ProductAllData {
-   private String product_name,p_id,product_size,product_weight,product_price,address_details,d_id,t_id,id,image_url,pickUp_district,pickUp_thana,product_type,pickUp_instructions;
+   private String product_name,p_id,product_size,product_weight,product_price,product_description,product_discount_percentage,product_discount_price,address_details,d_id,t_id,id,image_url,pickUp_district,pickUp_thana,product_type,pickUp_instructions;
 
     public ProductAllData() {
     }
 
-    public ProductAllData(String product_name,String p_id, String product_size, String product_weight, String product_price, String address_details, String d_id, String t_id, String id, String image_url, String pickUp_district, String pickUp_thana, String product_type, String pickUp_instructions) {
+    public ProductAllData(String product_name, String p_id, String product_size, String product_weight, String product_price, String product_description, String product_discount_percentage, String product_discount_price, String address_details, String d_id, String t_id, String id, String image_url, String pickUp_district, String pickUp_thana, String product_type, String pickUp_instructions) {
         this.product_name = product_name;
-        this.p_id=p_id;
+        this.p_id = p_id;
         this.product_size = product_size;
         this.product_weight = product_weight;
         this.product_price = product_price;
+        this.product_description = product_description;
+        this.product_discount_percentage = product_discount_percentage;
+        this.product_discount_price = product_discount_price;
         this.address_details = address_details;
         this.d_id = d_id;
         this.t_id = t_id;
@@ -21,6 +24,30 @@ public class ProductAllData {
         this.pickUp_thana = pickUp_thana;
         this.product_type = product_type;
         this.pickUp_instructions = pickUp_instructions;
+    }
+
+    public String getProduct_description() {
+        return product_description;
+    }
+
+    public void setProduct_description(String product_description) {
+        this.product_description = product_description;
+    }
+
+    public String getProduct_discount_percentage() {
+        return product_discount_percentage;
+    }
+
+    public void setProduct_discount_percentage(String product_discount_percentage) {
+        this.product_discount_percentage = product_discount_percentage;
+    }
+
+    public String getProduct_discount_price() {
+        return product_discount_price;
+    }
+
+    public void setProduct_discount_price(String product_discount_price) {
+        this.product_discount_price = product_discount_price;
     }
 
     public String getP_id() {

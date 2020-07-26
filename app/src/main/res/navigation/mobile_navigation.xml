@@ -32,4 +32,5 @@
         android:name="com.target.onlinecourierservice.ui.faq.FaqFragment"
         android:label="@string/menu_faq"
         tools:layout="@layout/fragment_faq" />
+
 </navigation>

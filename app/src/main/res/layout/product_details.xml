@@ -43,7 +43,36 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="9dp"
+                >
+                <TextView
+                    android:id="@+id/product_price1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:textColor="@color/greyDeep"
+                    android:text=""
+                    android:background="@drawable/line"
+                    android:visibility="visible"
+                    />
+                <TextView
+                    android:id="@+id/discount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
+                    android:text=""
+                    android:textSize="13sp"
+                    android:textColor="@color/grey"
+                    android:visibility="visible"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp">
                 <TextView
                     android:layout_width="wrap_content"
@@ -98,6 +127,16 @@
 
         </LinearLayout>
     </LinearLayout>
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Product Description"
+        android:layout_marginLeft="25dp"
+        android:textSize="15sp"
+        android:layout_marginRight="25dp"
+        android:layout_marginBottom="15dp"/>
+
     <Button
         android:id="@+id/add"
         android:text="Add to Cart"

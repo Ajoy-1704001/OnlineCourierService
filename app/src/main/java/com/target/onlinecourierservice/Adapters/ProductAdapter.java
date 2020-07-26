@@ -10,18 +10,29 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.FirebaseError;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.target.onlinecourierservice.Global;
 import com.target.onlinecourierservice.R;
 import com.target.onlinecourierservice.UserLoginActivity;
 import com.target.onlinecourierservice.model.CartProduct;
 import com.target.onlinecourierservice.model.ParcelDisplay;
+import com.target.onlinecourierservice.model.ProductAllData;
 import com.target.onlinecourierservice.model.ProductModel;
 
 import java.util.ArrayList;
@@ -48,18 +59,28 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.Datahold
         final ProductModel productModel = productModels.get(position);
         holder.SetName(productModel.getProductName());
         holder.SetManufacture(productModel.getProductMerchant());
-        holder.SetPrice(productModel.getProductPrice());
         holder.bind(productModel.getProductImage());
+        if(productModel.getProductDiscount().length()==0){
+            holder.SetPrice(productModel.getProductPrice());
+        }
+        else {
+            holder.SetPrice(productModel.getProductDiscountPrice());
+            holder.SetPreviousPrice(productModel.getProductPrice());
+            holder.SetDiscount("-"+productModel.getProductDiscount()+"%");
+        }
         holder.box.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                BottomSheetDialog bottomSheetDialog=new BottomSheetDialog(mContext);
+                final BottomSheetDialog bottomSheetDialog=new BottomSheetDialog(mContext);
                 bottomSheetDialog.setContentView(R.layout.product_details);
                 bottomSheetDialog.setCanceledOnTouchOutside(true);
 
                 TextView pName=(TextView)bottomSheetDialog.findViewById(R.id.p_name);
                 TextView pManu=(TextView)bottomSheetDialog.findViewById(R.id.manu);
-                TextView pPrice=(TextView)bottomSheetDialog.findViewById(R.id.p_price);
+                final TextView pPrice=(TextView)bottomSheetDialog.findViewById(R.id.p_price);
+                TextView des=(TextView)bottomSheetDialog.findViewById(R.id.description);
+                final TextView price2=(TextView)bottomSheetDialog.findViewById(R.id.product_price1);
+                TextView dis=(TextView)bottomSheetDialog.findViewById(R.id.discount);
                 Button add=(Button)bottomSheetDialog.findViewById(R.id.add);
                 final TextView Quantity=(TextView)bottomSheetDialog.findViewById(R.id.quantity);
                 ImageView img=(ImageView)bottomSheetDialog.findViewById(R.id.p_image);
@@ -87,14 +108,46 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.Datahold
 
                 pName.setText(productModel.getProductName());
                 pManu.setText(productModel.getProductMerchant());
-                pPrice.setText(productModel.getProductPrice());
+                des.setText(productModel.getProductDescription());
+                if(productModel.getProductDiscount().length()==0){
+                    pPrice.setText(productModel.getProductPrice());
+                }
+                else {
+                    des.setText(productModel.getProductDescription());
+                    dis.setText("-"+productModel.getProductDiscount()+"%");
+                    price2.setText(productModel.getProductPrice());
+                    pPrice.setText(productModel.getProductDiscountPrice());
+                }
                 Glide.with(mContext).load(productModel.getProductImage()).into(img);
 
                 add.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                       // Global.cartProducts.add(new CartProduct(productModel.getProductId(),productModel.getMerchantID(),productModel.getProductMerchant(),productModel.getProductName()));
-                        mContext.startActivity(new Intent(mContext, UserLoginActivity.class));
+                        FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
+                        DatabaseReference databaseReference=firebaseDatabase.getReference();
+                        databaseReference.child("Merchant-Products").child(productModel.getProductId()).addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                ProductAllData productAllData=snapshot.getValue(ProductAllData.class);
+                                Toast.makeText(mContext,productAllData.getP_id(),Toast.LENGTH_SHORT).show();
+                                if(productAllData!=null){
+                                    if(productAllData.getPickUp_district().equals("Dhaka")){
+                                        Global.cartProducts.add(new CartProduct(productModel.getProductId(),productModel.getMerchantID(),productModel.getProductMerchant(),productModel.getProductName(),Quantity.getText().toString(),pPrice.getText().toString(),"0"));
+                                        bottomSheetDialog.dismiss();
+                                    }
+                                    else {
+                                        Global.cartProducts.add(new CartProduct(productModel.getProductId(),productModel.getMerchantID(),productModel.getProductMerchant(),productModel.getProductName(),Quantity.getText().toString(),pPrice.getText().toString(),"0"));
+                                        bottomSheetDialog.dismiss();
+                                    }
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+
 
                     }
                 });
@@ -116,6 +169,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.Datahold
         private TextView txtManufacture;
         private TextView txtPrice;
         private ImageView imageView;
+        private TextView pDiscountPrice;
+        private TextView pDiscount;
         private LinearLayout box;
         public Dataholdeer(@NonNull View itemView) {
             super(itemView);
@@ -123,6 +178,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.Datahold
             txtManufacture = itemView.findViewById(R.id.manufacture);
             txtPrice = itemView.findViewById(R.id.product_price);
             imageView = itemView.findViewById(R.id.product_image);
+            pDiscountPrice=itemView.findViewById(R.id.product_price1);
+            pDiscount=itemView.findViewById(R.id.discount);
             box=itemView.findViewById(R.id.box);
         }
         public void SetName(String name){
@@ -133,6 +190,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.Datahold
         }
         public void SetPrice(String name){
             txtPrice.setText(name);
+        }
+        public void SetPreviousPrice(String name){
+            pDiscountPrice.setText(name);
+        }
+        public void SetDiscount(String name){
+            pDiscount.setText(name);
         }
         public void bind(String name){
             Glide.with(mContext).load(name).into(imageView);

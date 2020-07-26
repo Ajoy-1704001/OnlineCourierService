@@ -47,13 +47,13 @@
                 android:id="@+id/product_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="17sp"
+                android:textSize="19sp"
                 android:textColor="@color/MainThemeColor"
                 android:text="200"
                 android:layout_marginLeft="8dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="8dp"
                 android:textStyle="bold"/>
             <TextView
                 android:layout_width="wrap_content"
@@ -63,8 +63,33 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginBottom="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="12dp"
                 android:textColor="@color/MainThemeColor"/>
+            <TextView
+                android:id="@+id/product_price1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:textColor="@color/greyDeep"
+                android:text=""
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="13dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/line"
+                />
+            <TextView
+                android:id="@+id/discount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="13sp"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="13dp"
+                android:textColor="@color/grey"
+                />
 
         </LinearLayout>
 

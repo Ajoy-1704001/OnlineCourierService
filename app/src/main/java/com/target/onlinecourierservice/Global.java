@@ -40,5 +40,9 @@ public class Global {
 
     public static ArrayList<CartProduct>cartProducts;
 
+    public static String PurCity;
+    public static String PurThana;
+    public static String pMethod;
+
 
 }

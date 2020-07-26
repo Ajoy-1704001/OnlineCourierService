@@ -7,18 +7,48 @@ public class ProductModel {
     private String MerchantID;
     private String ProductPrice;
     private String ProductImage;
+    private String ProductDescription;
+    private String ProductDiscountPrice;
+    private String ProductDiscount;
 
     public ProductModel() {
 
     }
 
-    public ProductModel(String productId, String productName, String productMerchant, String merchantID, String productPrice, String productImage) {
+    public ProductModel(String productId, String productName, String productMerchant, String merchantID, String productPrice, String productImage, String productDescription, String productDiscountPrice, String productDiscount) {
         ProductId = productId;
         ProductName = productName;
         ProductMerchant = productMerchant;
         MerchantID = merchantID;
         ProductPrice = productPrice;
         ProductImage = productImage;
+        ProductDescription = productDescription;
+        ProductDiscountPrice = productDiscountPrice;
+        ProductDiscount = productDiscount;
+    }
+
+    public String getProductDescription() {
+        return ProductDescription;
+    }
+
+    public void setProductDescription(String productDescription) {
+        ProductDescription = productDescription;
+    }
+
+    public String getProductDiscountPrice() {
+        return ProductDiscountPrice;
+    }
+
+    public void setProductDiscountPrice(String productDiscountPrice) {
+        ProductDiscountPrice = productDiscountPrice;
+    }
+
+    public String getProductDiscount() {
+        return ProductDiscount;
+    }
+
+    public void setProductDiscount(String productDiscount) {
+        ProductDiscount = productDiscount;
     }
 
     public String getMerchantID() {
