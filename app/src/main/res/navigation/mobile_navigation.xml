@@ -27,6 +27,12 @@
         android:name="com.target.onlinecourierservice.ui.Shop.ShopFragment"
         android:label="@string/menu_shop"
         tools:layout="@layout/fragment_shop" />
+
+    <fragment
+        android:id="@+id/nav_my_order"
+        android:name="com.target.onlinecourierservice.ui.MyOrder.MyOrderFragment"
+        android:label="@string/menu_my_order"
+        tools:layout="@layout/fragment_my_order" />
     <fragment
         android:id="@+id/nav_faq"
         android:name="com.target.onlinecourierservice.ui.faq.FaqFragment"
