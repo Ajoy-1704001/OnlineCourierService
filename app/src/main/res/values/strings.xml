@@ -35,7 +35,7 @@
         <item>Select City</item>
         <item>Dhaka</item>
         <item>Chittagong</item>
-        <item>Feni</item>
+        <item>Rajshahi</item>
     </string-array>
 
 
@@ -53,24 +53,12 @@
         <item>Oxygen</item>
         <item>Raujan</item>
     </string-array>
-
-
-    <string-array name="Mirpur">
-        <item>Select Area</item>
-        <item>Mirpur-1</item>
-        <item>Mirpur-10</item>
-    </string-array>
-    <string-array name="Khilgaon">
-        <item>Select Area</item>
-        <item>Khilgaon</item>
-        <item>Tilpa-para</item>
+    <string-array name="Rajshahi">
+        <item>Select Thana</item>
+        <item>Rajshahi Sadar</item>
     </string-array>
 
-    <string-array name="Nasirabad">
-        <item>Select Area</item>
-        <item>Nasirabad</item>
-        <item>2 no. gate</item>
-    </string-array>
+
 
 
 

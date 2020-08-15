@@ -6,6 +6,7 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -71,9 +72,10 @@ public class UserLoginActivity extends AppCompatActivity {
 
             @Override
             public void onVerificationFailed(@NonNull FirebaseException e) {
-                Toast.makeText(UserLoginActivity.this,"Verification Failed, Try Again",Toast.LENGTH_SHORT).show();
+                Log.e("Hello", "onVerificationFailed: ",e );
+                Toast.makeText(UserLoginActivity.this,"Verification Failed, Try Again Later",Toast.LENGTH_SHORT).show();
                 next.setEnabled(true);
-                progressBar.setVisibility(View.GONE);
+                progressBar.setVisibility(View.INVISIBLE);
             }
 
             @Override
@@ -88,7 +90,7 @@ public class UserLoginActivity extends AppCompatActivity {
                         startActivity(otpIntent);
                         finish();
                     }
-                },10000);
+                },8000);
 
             }
 

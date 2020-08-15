@@ -8,6 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/greyBlue"
+        android:id="@+id/selected"
         >
         <LinearLayout
             android:layout_width="0dp"
@@ -47,6 +48,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/status"
                 android:text="Deliverd"
+                android:textSize="13sp"
                 android:textColor="@color/MainThemeColor"/>
         </LinearLayout>
 

@@ -32,6 +32,7 @@ import com.target.onlinecourierservice.model.ParcelModel;
 import com.target.onlinecourierservice.ui.home.HomeViewModel;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class MyOrderFragment extends Fragment {
 
@@ -63,7 +64,7 @@ public class MyOrderFragment extends Fragment {
         final DatabaseReference reference=database.getReference();
 
 
-        reference.child("Purchase-Order").addValueEventListener(new ValueEventListener() {
+        reference.child("Purchase-Order").orderByChild("orderNo").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 parcelDisplayArrayList.clear();
@@ -71,24 +72,12 @@ public class MyOrderFragment extends Fragment {
                     final CartOrder cartOrder=keyNode.getValue(CartOrder.class);
                     if(cartOrder!=null){
                         if(cartOrder.getUserID().equals(userID)){
-                            reference.child("Order-Status").child(cartOrder.getOrderNo()).addValueEventListener(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                    String status=snapshot.getValue(String.class);
-                                    parcelDisplayArrayList.add(new CartDisplayLIst(cartOrder.getOrderNo(),cartOrder.getDate(),status));
-                                    listAdapter.notifyDataSetChanged();
-                                }
-
-                                @Override
-                                public void onCancelled(@NonNull DatabaseError error) {
-
-                                }
-                            });
+                            parcelDisplayArrayList.add(new CartDisplayLIst(String.valueOf(cartOrder.getOrderNo()),cartOrder.getDate(),cartOrder.getStatus()));
+                            listAdapter.notifyDataSetChanged();
                         }
                     }
                 }
-                listAdapter = new OrderAdapter(parcelDisplayArrayList,getContext());
-                recyclerView.setAdapter(listAdapter);
+                Collections.reverse(parcelDisplayArrayList);
 
             }
 
@@ -97,6 +86,8 @@ public class MyOrderFragment extends Fragment {
 
             }
         });
+        listAdapter = new OrderAdapter(parcelDisplayArrayList,getContext());
+        recyclerView.setAdapter(listAdapter);
 
 
         return root;

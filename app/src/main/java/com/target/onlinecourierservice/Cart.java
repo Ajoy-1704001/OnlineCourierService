@@ -92,6 +92,10 @@ public class Cart extends AppCompatActivity {
                         thanaAdapter=ArrayAdapter.createFromResource(Cart.this,R.array.Chittagong,R.layout.spinner);
                         Global.PurCity= (String) parent.getItemAtPosition(position);
                         break;
+                    case  3:
+                        thanaAdapter=ArrayAdapter.createFromResource(Cart.this,R.array.Rajshahi,R.layout.spinner);
+                        Global.PurCity= (String) parent.getItemAtPosition(position);
+                        break;
                 }
                 thanaAdapter.setDropDownViewResource(R.layout.spinner);
                 spinnerThana.setAdapter(thanaAdapter);

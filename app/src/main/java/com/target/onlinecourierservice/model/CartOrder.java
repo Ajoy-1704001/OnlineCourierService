@@ -10,7 +10,8 @@ public class CartOrder {
     private String Total_taka;
     private String PaymentType;
     private String TrxID;
-    private String OrderNo;
+    private long OrderNo;
+    private String status;
 
     public CartOrder() {
     }
@@ -87,15 +88,23 @@ public class CartOrder {
         TrxID = trxID;
     }
 
-    public String getOrderNo() {
+    public long getOrderNo() {
         return OrderNo;
     }
 
-    public void setOrderNo(String orderNo) {
+    public void setOrderNo(long orderNo) {
         OrderNo = orderNo;
     }
 
-    public CartOrder(String userID, String buyerName, String shippingAddress, String shippingCity, String shippingThana, String date, String total_taka, String paymentType, String trxID, String orderNo) {
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public CartOrder(String userID, String buyerName, String shippingAddress, String shippingCity, String shippingThana, String date, String total_taka, String paymentType, String trxID, long orderNo, String status) {
         this.userID = userID;
         BuyerName = buyerName;
         ShippingAddress = shippingAddress;
@@ -106,5 +115,6 @@ public class CartOrder {
         PaymentType = paymentType;
         TrxID = trxID;
         OrderNo = orderNo;
+        this.status=status;
     }
 }

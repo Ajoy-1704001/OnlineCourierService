@@ -8,11 +8,12 @@ public class CartProduct {
     private String Quantity;
     private String Price;
     private String deliveryCharge;
+    private String pickupCity;
 
     public CartProduct() {
     }
 
-    public CartProduct(String productID, String merchantID, String merchantName, String productName, String quantity, String price, String deliveryCharge) {
+    public CartProduct(String productID, String merchantID, String merchantName, String productName, String quantity, String price, String deliveryCharge, String pickupCity) {
         this.productID = productID;
         MerchantID = merchantID;
         MerchantName = merchantName;
@@ -20,6 +21,15 @@ public class CartProduct {
         Quantity = quantity;
         Price = price;
         this.deliveryCharge = deliveryCharge;
+        this.pickupCity = pickupCity;
+    }
+
+    public String getPickupCity() {
+        return pickupCity;
+    }
+
+    public void setPickupCity(String pickupCity) {
+        this.pickupCity = pickupCity;
     }
 
     public String getMerchantID() {

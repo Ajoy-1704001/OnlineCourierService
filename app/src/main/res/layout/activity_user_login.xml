@@ -42,13 +42,21 @@
         android:inputType="phone"
         android:drawablePadding="10dp"
         android:background="@drawable/phone_text_bg"
-        android:layout_margin="40dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="10dp"
         android:hint="+88   Enter Mobile Number"
         android:drawableLeft="@drawable/icons8_bangladesh_48px"/>
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="22dp"
+        android:layout_height="21dp"
+        android:layout_marginBottom="10dp"
+        android:layout_gravity="center_horizontal"
+        android:indeterminate="true"
+        android:visibility="invisible" />
         <Button
             android:id="@+id/next"
             android:layout_marginLeft="40dp"
@@ -62,23 +70,6 @@
             android:textStyle="bold"
             android:background="@drawable/next_prev_button"/>
 
-        <ProgressBar
-            android:id="@+id/progress"
-            android:layout_width="22dp"
-            android:layout_height="21dp"
-            android:layout_alignStart="@+id/next"
-            android:layout_alignLeft="@+id/next"
-            android:layout_alignEnd="@+id/next"
-            android:layout_alignRight="@+id/next"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="98dp"
-            android:layout_marginLeft="98dp"
-            android:layout_marginTop="14dp"
-            android:layout_marginEnd="211dp"
-            android:layout_marginRight="211dp"
-            android:indeterminateTint="@color/LogoYellow"
-            android:visibility="gone" />
-    </RelativeLayout>
     <Button
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"

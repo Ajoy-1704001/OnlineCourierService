@@ -1,6 +1,8 @@
 package com.target.onlinecourierservice.model;
 
 public class ParcelModel {
+    private long parcelId;
+    private String status;
     private String userId;
     private String senderName;
     private String senderPhone;
@@ -25,7 +27,9 @@ public class ParcelModel {
     public ParcelModel() {
     }
 
-    public ParcelModel(String userId, String senderName, String senderPhone, String pickupAddress, String pickupCity, String pickupThana, String pickupInstructions, String recipientName, String recipientPhone, String recipientAddress, String recipientCity, String recipientThana, String deliveryInstructions, String packageType, String packageSize, String packageWeight, String paymentMethod, String totalAmount, String txdId,String Date) {
+    public ParcelModel(long parcelId,String status,String userId, String senderName, String senderPhone, String pickupAddress, String pickupCity, String pickupThana, String pickupInstructions, String recipientName, String recipientPhone, String recipientAddress, String recipientCity, String recipientThana, String deliveryInstructions, String packageType, String packageSize, String packageWeight, String paymentMethod, String totalAmount, String txdId,String Date) {
+        this.parcelId=parcelId;
+        this.status=status;
         this.userId = userId;
         this.senderName = senderName;
         this.senderPhone = senderPhone;
@@ -46,6 +50,22 @@ public class ParcelModel {
         this.totalAmount = totalAmount;
         TxdId = txdId;
         this.Date=Date;
+    }
+
+    public long getParcelId() {
+        return parcelId;
+    }
+
+    public void setParcelId(long parcelId) {
+        this.parcelId = parcelId;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getDate() {

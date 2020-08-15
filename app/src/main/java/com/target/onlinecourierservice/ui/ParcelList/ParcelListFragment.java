@@ -30,6 +30,7 @@ import com.target.onlinecourierservice.model.ParcelModel;
 import com.target.onlinecourierservice.ui.CreateOrder.CreateOrderViewModel;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ParcelListFragment extends Fragment {
@@ -65,7 +66,7 @@ public class ParcelListFragment extends Fragment {
 
         FirebaseDatabase database= FirebaseDatabase.getInstance();
         final DatabaseReference reference=database.getReference();
-        reference.child("Parcel").addValueEventListener(new ValueEventListener() {
+        reference.child("Parcel").orderByChild("parcelId").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 parcelDisplayArrayList.clear();
@@ -73,24 +74,12 @@ public class ParcelListFragment extends Fragment {
                     final ParcelModel parcelModel=keyNode.getValue(ParcelModel.class);
                     if(parcelModel!=null){
                         if(parcelModel.getUserId().equals(userID)){
-                            reference.child("Parcel_Status").child(keyNode.getKey()).addValueEventListener(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                    String status=snapshot.getValue(String.class);
-                                    parcelDisplayArrayList.add(new ParcelDisplay(keyNode.getKey(),parcelModel.getDate(),status));
-                                    listAdapter.notifyDataSetChanged();
-                                }
-                                @Override
-                                public void onCancelled(@NonNull DatabaseError error) {
-
-                                }
-                            });
-
+                            parcelDisplayArrayList.add(new ParcelDisplay(keyNode.getKey(),parcelModel.getDate(),parcelModel.getStatus()));
+                            listAdapter.notifyDataSetChanged();
                         }
                     }
                 }
-                listAdapter = new ParcelAdapter(parcelDisplayArrayList,getContext());
-                recyclerView.setAdapter(listAdapter);
+                Collections.reverse(parcelDisplayArrayList);
 
             }
 
@@ -100,6 +89,8 @@ public class ParcelListFragment extends Fragment {
             }
         });
 
+        listAdapter = new ParcelAdapter(parcelDisplayArrayList,getActivity());
+        recyclerView.setAdapter(listAdapter);
 
 
         return root;

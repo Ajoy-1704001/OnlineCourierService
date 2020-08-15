@@ -129,14 +129,13 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.Datahold
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
                                 ProductAllData productAllData=snapshot.getValue(ProductAllData.class);
-                                Toast.makeText(mContext,productAllData.getP_id(),Toast.LENGTH_SHORT).show();
                                 if(productAllData!=null){
                                     if(productAllData.getPickUp_district().equals("Dhaka")){
-                                        Global.cartProducts.add(new CartProduct(productModel.getProductId(),productModel.getMerchantID(),productModel.getProductMerchant(),productModel.getProductName(),Quantity.getText().toString(),pPrice.getText().toString(),"0"));
+                                        Global.cartProducts.add(new CartProduct(productModel.getProductId(),productModel.getMerchantID(),productModel.getProductMerchant(),productModel.getProductName(),Quantity.getText().toString(),pPrice.getText().toString(),"0",productAllData.getPickUp_district()));
                                         bottomSheetDialog.dismiss();
                                     }
                                     else {
-                                        Global.cartProducts.add(new CartProduct(productModel.getProductId(),productModel.getMerchantID(),productModel.getProductMerchant(),productModel.getProductName(),Quantity.getText().toString(),pPrice.getText().toString(),"0"));
+                                        Global.cartProducts.add(new CartProduct(productModel.getProductId(),productModel.getMerchantID(),productModel.getProductMerchant(),productModel.getProductName(),Quantity.getText().toString(),pPrice.getText().toString(),"0",productAllData.getPickUp_district()));
                                         bottomSheetDialog.dismiss();
                                     }
                                 }

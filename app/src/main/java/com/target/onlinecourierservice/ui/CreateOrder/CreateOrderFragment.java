@@ -136,7 +136,6 @@ public class CreateOrderFragment extends Fragment {
                         viewPager.setCurrentItem(1);
                         s1.setImageResource(R.drawable.icons8_user_location_100px_1);
                         s2.setImageResource(R.drawable.icons8_address_100px);
-                        Toast.makeText(getActivity(),Global.senderCity,Toast.LENGTH_SHORT).show();
                     }
                 }
                 else if(tabLayout.getSelectedTabPosition()==1){
@@ -207,7 +206,7 @@ public class CreateOrderFragment extends Fragment {
                     String Date = df.format(Calendar.getInstance().getTime());
                     if(Global.paymentMethod.equals("Mobile Banking")){
                         if(Global.txID.getText().toString().length()==10){
-                            ParcelModel parcelModel=new ParcelModel(currentUser.getUid(),Global.senderName.getText().toString(),Global.senderMobile.getText().toString(),Global.senderAddress.getText().toString(),Global.senderCity,Global.senderThana,Global.pickupInstruction.getText().toString(),Global.repName.getText().toString(),Global.repMobile.getText().toString(),
+                            ParcelModel parcelModel=new ParcelModel((long) (Integer.parseInt(Global.ParcelId) + 1),"Pending",currentUser.getUid(),Global.senderName.getText().toString(),Global.senderMobile.getText().toString(),Global.senderAddress.getText().toString(),Global.senderCity,Global.senderThana,Global.pickupInstruction.getText().toString(),Global.repName.getText().toString(),Global.repMobile.getText().toString(),
                                     Global.repAddress.getText().toString(),Global.repCity,Global.repThana,Global.deliveyInstruction.getText().toString(),Global.packageType,Global.size,Global.weight,Global.paymentMethod,Global.totalMoney,Global.txID.getText().toString(),Date);
                             databaseReference.child("Parcel").child(String.valueOf(Integer.parseInt(Global.ParcelId)+1)).setValue(parcelModel).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
@@ -226,13 +225,13 @@ public class CreateOrderFragment extends Fragment {
                     }
                     else if (Global.paymentMethod.equals("Cash On Delivery")){
 
-                        ParcelModel parcelModel=new ParcelModel(currentUser.getUid(),Global.senderName.getText().toString(),Global.senderMobile.getText().toString(),Global.senderAddress.getText().toString(),Global.senderCity,Global.senderThana,Global.pickupInstruction.getText().toString(),Global.repName.getText().toString(),Global.repMobile.getText().toString(),
+                        ParcelModel parcelModel=new ParcelModel((long)(Integer.parseInt(Global.ParcelId)+1),"Pending",currentUser.getUid(),Global.senderName.getText().toString(),Global.senderMobile.getText().toString(),Global.senderAddress.getText().toString(),Global.senderCity,Global.senderThana,Global.pickupInstruction.getText().toString(),Global.repName.getText().toString(),Global.repMobile.getText().toString(),
                                 Global.repAddress.getText().toString(),Global.repCity,Global.repThana,Global.deliveyInstruction.getText().toString(),Global.packageType,Global.size,Global.weight,Global.paymentMethod,Global.totalMoney,"xxxxxxxxxxx",Date);
                         databaseReference.child("Parcel").child(String.valueOf(Integer.parseInt(Global.ParcelId)+1)).setValue(parcelModel).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
                                 databaseReference.child("Parcel_No").setValue(String.valueOf(Integer.parseInt(Global.ParcelId)+1));
-                                databaseReference.child("Parcel_Status").child(String.valueOf(Integer.parseInt(Global.ParcelId)+1)).setValue("Pending");
+                                //databaseReference.child("Parcel_Status").child(String.valueOf(Integer.parseInt(Global.ParcelId)+1)).setValue("Pending");
                                 Intent intent = new Intent(getActivity(), ConfirmationActivity.class);
                                 startActivity(intent);
                                 getActivity().finish();

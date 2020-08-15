@@ -88,16 +88,15 @@ public class PaymentActivity extends AppCompatActivity {
                 final DatabaseReference databaseReference=firebaseDatabase.getReference();
                 @SuppressLint("SimpleDateFormat") DateFormat df = new SimpleDateFormat("EEE, d MMM yyyy, HH:mm");
                 String Date = df.format(Calendar.getInstance().getTime());
-                final String unique= String.valueOf(System.currentTimeMillis());
+                final long unique= System.currentTimeMillis();
                 if(Global.pMethod.equals("Mobile Banking")){
                     if(txID.getText().toString().length()==10){
-                        CartOrder cartOrder=new CartOrder(CurrentUser.getUid(),name,address,City,Thana,Date,TotalAmount,Global.pMethod,txID.getText().toString(),unique);
-                        databaseReference.child("Purchase-Order").child(unique).setValue(cartOrder).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        CartOrder cartOrder=new CartOrder(CurrentUser.getUid(),name,address,City,Thana,Date,TotalAmount,Global.pMethod,txID.getText().toString(),unique,"Pending");
+                        databaseReference.child("Purchase-Order").child(String.valueOf(unique)).setValue(cartOrder).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
-                                databaseReference.child("Order-Status").child(unique).setValue("Pending");
                                 for(int i=0;i<Global.cartProducts.size();i++){
-                                    databaseReference.child("Purchase-Order").child(unique).child("Products").child("P" + String.valueOf(i + 1)).setValue(Global.cartProducts.get(i));
+                                    databaseReference.child("Purchase-Order").child(String.valueOf(unique)).child("Products").child("P" + String.valueOf(i + 1)).setValue(Global.cartProducts.get(i));
                                 }
                                 Intent intent=new Intent(PaymentActivity.this,ConfirmationActivity.class);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -106,17 +105,16 @@ public class PaymentActivity extends AppCompatActivity {
                         });
                     }
                     else{
-                        Global.txID.setError("Invalid TxnID");
+                        txID.setError("Invalid TxnID");
                     }
                 }
                 else if (Global.pMethod.equals("Cash On Delivery")){
-                    CartOrder cartOrder=new CartOrder(CurrentUser.getUid(),name,address,City,Thana,Date,TotalAmount,"Cash On Delivery","XXXXXXXXXX",unique);
-                    databaseReference.child("Purchase-Order").child(unique).setValue(cartOrder).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    CartOrder cartOrder=new CartOrder(CurrentUser.getUid(),name,address,City,Thana,Date,TotalAmount,"Cash On Delivery","XXXXXXXXXX",unique,"Pending");
+                    databaseReference.child("Purchase-Order").child(String.valueOf(unique)).setValue(cartOrder).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
-                            databaseReference.child("Order-Status").child(unique).setValue("Pending");
                             for(int i=0;i<Global.cartProducts.size();i++){
-                                databaseReference.child("Purchase-Order").child(unique).child("Products").child("P" + String.valueOf(i + 1)).setValue(Global.cartProducts.get(i));
+                                databaseReference.child("Purchase-Order").child(String.valueOf(unique)).child("Products").child("P" + String.valueOf(i + 1)).setValue(Global.cartProducts.get(i));
                             }
                             Intent intent=new Intent(PaymentActivity.this,ConfirmationActivity.class);
                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

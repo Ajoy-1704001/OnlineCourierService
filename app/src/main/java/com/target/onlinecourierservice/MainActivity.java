@@ -74,9 +74,9 @@ public class MainActivity extends AppCompatActivity {
         userName=navigationView.getHeaderView(0).findViewById(R.id.name);
         if(currentUser!=null){
             userName.setText(currentUser.getPhoneNumber());
+            databaseReference.child("Users").child(currentUser.getUid()).setValue(currentUser.getPhoneNumber());
         }
 
-        databaseReference.child("Users").child(currentUser.getUid()).setValue(currentUser.getPhoneNumber());
 
     }
 

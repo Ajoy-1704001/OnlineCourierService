@@ -30,6 +30,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.target.onlinecourierservice.Adapters.ProductAdapter;
 import com.target.onlinecourierservice.R;
+import com.target.onlinecourierservice.model.Merchant;
 import com.target.onlinecourierservice.model.ProductAllData;
 import com.target.onlinecourierservice.model.ProductModel;
 import com.target.onlinecourierservice.ui.ParcelList.ParcelListViewModel;
@@ -73,13 +74,17 @@ public class ShopFragment extends Fragment {
                 for(final DataSnapshot keyNode : snapshot.getChildren()){
                     final ProductAllData productAllData=keyNode.getValue(ProductAllData.class);
                     if(productAllData!=null){
-                        firebaseFirestore.collection("Merchants").document(productAllData.getId()).addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                        databaseReference.child("Merchants").child(productAllData.getId()).addValueEventListener(new ValueEventListener() {
                             @Override
-                            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
-                                    if(value!=null){
-                                        productModels.add(new ProductModel(keyNode.getKey(),productAllData.getProduct_name(),value.getString("businessName"),productAllData.getId(),productAllData.getProduct_price(),productAllData.getImage_url(),productAllData.getProduct_description(),productAllData.getProduct_discount_price(),productAllData.getProduct_discount_percentage()));
-                                        gridAdapter.notifyDataSetChanged();
-                                    }
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                Merchant merchant=snapshot.getValue(Merchant.class);
+                                productModels.add(new ProductModel(keyNode.getKey(),productAllData.getProduct_name(),merchant.getBusinessName(),productAllData.getId(),productAllData.getProduct_price(),productAllData.getImage_url(),productAllData.getProduct_description(),productAllData.getProduct_discount_price(),productAllData.getProduct_discount_percentage()));
+                                gridAdapter.notifyDataSetChanged();
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
                             }
                         });
                     }
