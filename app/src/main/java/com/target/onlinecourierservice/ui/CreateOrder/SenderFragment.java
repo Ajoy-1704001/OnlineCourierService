@@ -26,6 +26,7 @@ public class SenderFragment extends Fragment {
     EditText name,phone,address,pIn;
 
     public SenderFragment() {
+
     }
 
     @Nullable

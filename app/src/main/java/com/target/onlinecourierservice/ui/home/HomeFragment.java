@@ -109,11 +109,24 @@ public class HomeFragment extends Fragment {
                         databaseReference.child("Merchants").child(productAllData.getId()).addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                Merchant merchant=snapshot.getValue(Merchant.class);
-                                if(merchant.getBusinessName().equals("HasanTech")){
-                                    productModels.add(new ProductModel(keyNode.getKey(),productAllData.getProduct_name(),merchant.getBusinessName(),productAllData.getId(),productAllData.getProduct_price(),productAllData.getImage_url(),productAllData.getProduct_description(),productAllData.getProduct_discount_price(),productAllData.getProduct_discount_percentage()));
-                                    gridAdapter.notifyDataSetChanged();
-                                }
+                                final Merchant merchant=snapshot.getValue(Merchant.class);
+                                databaseReference.child("top").addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                        for (DataSnapshot key:snapshot.getChildren()){
+                                            String m=key.getValue(String.class);
+                                            if(merchant.getBusinessName().equals(m)){
+                                                productModels.add(new ProductModel(keyNode.getKey(),productAllData.getProduct_name(),merchant.getBusinessName(),productAllData.getId(),productAllData.getProduct_price(),productAllData.getImage_url(),productAllData.getProduct_description(),productAllData.getProduct_discount_price(),productAllData.getProduct_discount_percentage()));
+                                                gridAdapter.notifyDataSetChanged();
+                                            }
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+
+                                    }
+                                });
                             }
 
                             @Override

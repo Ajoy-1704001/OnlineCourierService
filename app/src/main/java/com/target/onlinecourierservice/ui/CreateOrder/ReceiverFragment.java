@@ -25,6 +25,7 @@ public class ReceiverFragment extends Fragment {
 
     EditText name,phone,address,dIn;
     public ReceiverFragment() {
+
     }
 
     @Nullable

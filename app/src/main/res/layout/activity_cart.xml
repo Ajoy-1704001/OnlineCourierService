@@ -11,8 +11,11 @@
         android:layout_height="wrap_content"
         android:text="Cart"
         android:textColor="@color/MainThemeColor"
-        android:layout_margin="20dp"
-        android:textSize="30sp"/>
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="5dp"
+        android:textSize="25sp"
+        android:layout_marginStart="20dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
@@ -27,7 +30,7 @@
         android:text="Shipping Address"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:textSize="25sp"
+        android:textSize="20sp"
         />
     <EditText
         android:layout_marginTop="8dp"
@@ -36,7 +39,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/edit_text_bg"
         android:inputType="textPersonName"
-        android:padding="10dp"
+        android:padding="5dp"
         android:hint="Enter Name"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"/>
@@ -48,7 +51,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/edit_text_bg"
         android:inputType="textPostalAddress"
-        android:padding="10dp"
+        android:padding="5dp"
         android:hint="Enter Shipping Address"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"/>
@@ -66,7 +69,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/spinner_bg"
             android:layout_marginRight="4dp"
-            />
+            android:layout_marginEnd="4dp" />
         <Spinner
             android:layout_marginTop="8dp"
             android:id="@+id/spinnerThana"

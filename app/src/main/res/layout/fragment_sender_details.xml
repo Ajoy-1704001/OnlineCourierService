@@ -18,59 +18,69 @@
         android:textStyle="bold"
         android:layout_marginBottom="15dp"/>
 
-    <EditText
-        android:layout_marginTop="8dp"
-        android:id="@+id/PersonName"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/edit_text_bg"
-        android:inputType="textPersonName"
-        android:padding="10dp"
-        android:hint="Enter Name" />
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <EditText
+                android:layout_marginTop="8dp"
+                android:id="@+id/PersonName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edit_text_bg"
+                android:inputType="textPersonName"
+                android:padding="10dp"
+                android:hint="Enter Name" />
 
-    <EditText
-        android:layout_marginTop="8dp"
-        android:id="@+id/PersonMobile"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/edit_text_bg"
-        android:inputType="phone"
-        android:padding="10dp"
-        android:hint="Enter Mobile Number"/>
-    <EditText
-        android:layout_marginTop="8dp"
-        android:id="@+id/PersonAddress"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/edit_text_bg"
-        android:inputType="textPostalAddress"
-        android:padding="10dp"
-        android:hint="Enter Pickup Address"/>
+            <EditText
+                android:layout_marginTop="8dp"
+                android:id="@+id/PersonMobile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edit_text_bg"
+                android:inputType="phone"
+                android:padding="10dp"
+                android:hint="Enter Mobile Number"/>
+            <EditText
+                android:layout_marginTop="8dp"
+                android:id="@+id/PersonAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edit_text_bg"
+                android:inputType="textPostalAddress"
+                android:padding="10dp"
+                android:hint="Enter Pickup Address"/>
 
-    <Spinner
-        android:layout_marginTop="8dp"
-        android:id="@+id/spinnerCity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/spinner_bg"
-        />
-    <Spinner
-        android:layout_marginTop="8dp"
-        android:id="@+id/spinnerThana"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/spinner_bg"
-        />
-    <EditText
-        android:layout_marginTop="8dp"
-        android:id="@+id/pickupInstruction"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/edit_text_bg"
-        android:inputType="textMultiLine"
-        android:padding="10dp"
-        android:hint="Pickup Instruction (Optional)"/>
+            <Spinner
+                android:layout_marginTop="8dp"
+                android:id="@+id/spinnerCity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/spinner_bg"
+                />
+            <Spinner
+                android:layout_marginTop="8dp"
+                android:id="@+id/spinnerThana"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/spinner_bg"
+                />
+            <EditText
+                android:layout_marginTop="8dp"
+                android:id="@+id/pickupInstruction"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edit_text_bg"
+                android:inputType="textMultiLine"
+                android:padding="10dp"
+                android:hint="Pickup Instruction (Optional)"/>
 
+
+        </LinearLayout>
+    </ScrollView>
 
 
 </LinearLayout>

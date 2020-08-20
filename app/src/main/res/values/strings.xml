@@ -35,7 +35,6 @@
         <item>Select City</item>
         <item>Dhaka</item>
         <item>Chittagong</item>
-        <item>Rajshahi</item>
     </string-array>
 
 
@@ -53,17 +52,9 @@
         <item>Oxygen</item>
         <item>Raujan</item>
     </string-array>
-    <string-array name="Rajshahi">
-        <item>Select Thana</item>
-        <item>Rajshahi Sadar</item>
-    </string-array>
-
-
-
-
-
-
-
+    <string name="title_activity_splash">FullscreenActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 
 
 </resources>

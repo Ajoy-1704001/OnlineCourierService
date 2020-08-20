@@ -19,7 +19,7 @@
                 android:layout_height="wrap_content"
                 android:text="Mobile Phone"
                 android:textColor="@color/MainThemeColor"
-                android:textSize="20sp"/>
+                android:textSize="18sp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -37,7 +37,7 @@
                 android:layout_height="wrap_content"
                 android:text="10000 Tk"
                 android:textColor="@color/MainThemeColor"
-                android:textSize="20sp"/>
+                android:textSize="18sp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
