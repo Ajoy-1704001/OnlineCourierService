@@ -65,6 +65,7 @@ public class CreateOrderFragment extends Fragment {
 
         mAuth=FirebaseAuth.getInstance();
         currentUser=mAuth.getCurrentUser();
+        Global.category="All Category";
 
         FirebaseDatabase database=FirebaseDatabase.getInstance();
         final DatabaseReference databaseReference=database.getReference();

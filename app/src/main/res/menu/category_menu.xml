@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/c0"
+        android:icon="@drawable/baby"
+        android:title="All Category" />
+    <item android:id="@+id/c1"
+        android:icon="@drawable/baby"
+        android:title="Baby Products" />
+    <item android:id="@+id/c2"
+        android:icon="@drawable/books"
+        android:title="Books &amp; Stationary" />
+    <item android:id="@+id/c3"
+        android:icon="@drawable/computers"
+        android:title="Computer &amp; Accessories"
+        />
+    <item android:id="@+id/c4"
+        android:icon="@drawable/fashion"
+        android:title="Fashion and Beauty" />
+    <item android:id="@+id/c5"
+        android:icon="@drawable/food"
+        android:title="Foods" />
+    <item android:id="@+id/c6"
+        android:icon="@drawable/grocery"
+        android:title="Grocery" />
+    <item android:id="@+id/c7"
+        android:icon="@drawable/health"
+        android:title="Health and Pharma" />
+    <item android:id="@+id/c8"
+        android:icon="@drawable/leathers"
+        android:title="Leather Goods" />
+    <item android:id="@+id/c9"
+        android:icon="@drawable/mobile"
+        android:title="Mobile Gadget &amp; Accessories" />
+    <item android:id="@+id/c10"
+        android:icon="@drawable/organic"
+        android:title="Organic Foods" />
+
+
+</menu>

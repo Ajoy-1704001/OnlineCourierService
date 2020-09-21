@@ -1,14 +1,15 @@
 package com.target.onlinecourierservice.model;
 
 public class ProductAllData {
-   private String product_name,p_id,product_size,product_weight,product_price,product_description,product_discount_percentage,product_discount_price,address_details,d_id,t_id,id,image_url,pickUp_district,pickUp_thana,product_type,pickUp_instructions;
+   private String product_name,p_id,product_cat,product_size,product_weight,product_price,product_description,product_discount_percentage,product_discount_price,address_details,d_id,t_id,id,image_url,pickUp_district,pickUp_thana,product_type,pickUp_instructions;
 
     public ProductAllData() {
     }
 
-    public ProductAllData(String product_name, String p_id, String product_size, String product_weight, String product_price, String product_description, String product_discount_percentage, String product_discount_price, String address_details, String d_id, String t_id, String id, String image_url, String pickUp_district, String pickUp_thana, String product_type, String pickUp_instructions) {
+    public ProductAllData(String product_name, String p_id, String product_cat, String product_size, String product_weight, String product_price, String product_description, String product_discount_percentage, String product_discount_price, String address_details, String d_id, String t_id, String id, String image_url, String pickUp_district, String pickUp_thana, String product_type, String pickUp_instructions) {
         this.product_name = product_name;
         this.p_id = p_id;
+        this.product_cat = product_cat;
         this.product_size = product_size;
         this.product_weight = product_weight;
         this.product_price = product_price;
@@ -24,6 +25,14 @@ public class ProductAllData {
         this.pickUp_thana = pickUp_thana;
         this.product_type = product_type;
         this.pickUp_instructions = pickUp_instructions;
+    }
+
+    public String getProduct_cat() {
+        return product_cat;
+    }
+
+    public void setProduct_cat(String product_cat) {
+        this.product_cat = product_cat;
     }
 
     public String getProduct_description() {

@@ -8,17 +8,37 @@
     tools:context=".ui.Shop.ShopFragment"
     android:padding="15dp">
 
-    <EditText
-        android:id="@+id/searchBar"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textAutoComplete"
-        android:background="@drawable/edit_text_bg"
-        android:padding="10dp"
-        android:drawableLeft="@drawable/ic_baseline_search_24"
-        android:hint="Search Products"
-        android:drawableStart="@drawable/ic_baseline_search_24"
-        android:layout_marginBottom="10dp"/>
+        android:layout_marginBottom="5dp">
+        <Button
+            android:id="@+id/category"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="All Category"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            android:padding="15dp"
+            android:gravity="start"
+            android:layout_marginEnd="3dp"
+            android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
+            android:drawableRight="@drawable/ic_baseline_arrow_drop_down_24"
+            android:drawableStart="@drawable/ic_baseline_apps_24"
+            android:textColor="@color/greyDeep"
+            android:drawableLeft="@drawable/ic_baseline_apps_24"
+            android:layout_marginRight="3dp" />
+        <ImageButton
+            android:id="@+id/search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_search_24"
+            android:padding="15dp"
+            android:layout_gravity="center"
+            />
+
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"

@@ -24,6 +24,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.target.onlinecourierservice.Adapters.ParcelAdapter;
+import com.target.onlinecourierservice.Global;
 import com.target.onlinecourierservice.R;
 import com.target.onlinecourierservice.model.ParcelDisplay;
 import com.target.onlinecourierservice.model.ParcelModel;
@@ -59,6 +60,7 @@ public class ParcelListFragment extends Fragment {
         currentUser=mAuth.getCurrentUser();
 
         final String userID=currentUser.getUid();
+        Global.category="All Category";
 
         recyclerView=root.findViewById(R.id.recyclerView);
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getActivity());

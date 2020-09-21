@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
             databaseReference.child("Users").child(currentUser.getUid()).setValue(currentUser.getPhoneNumber());
         }
 
-
+        Global.category="All Category";
     }
 
     @Override

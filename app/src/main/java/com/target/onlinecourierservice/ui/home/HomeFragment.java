@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Observer;
@@ -32,6 +33,7 @@ import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.target.onlinecourierservice.Adapters.ProductAdapter;
+import com.target.onlinecourierservice.Global;
 import com.target.onlinecourierservice.MainActivity;
 import com.target.onlinecourierservice.R;
 import com.target.onlinecourierservice.UserLoginActivity;
@@ -51,6 +53,7 @@ public class HomeFragment extends Fragment {
     RecyclerView recyclerView;
     ProductAdapter gridAdapter;
     ArrayList<ProductModel> productModels=new ArrayList<>();
+    CardView c1,c2,c3,c4,c5,c6,c7,c8,c9,c10;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -65,6 +68,7 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        Global.category="All Category";
         parcel_order=root.findViewById(R.id.parcel);
         signOut=root.findViewById(R.id.signOut);
         final NavController navController= Navigation.findNavController(getActivity(),R.id.nav_host_fragment);
@@ -147,6 +151,91 @@ public class HomeFragment extends Fragment {
         gridAdapter=new ProductAdapter(productModels,getActivity());
         recyclerView.setAdapter(gridAdapter);
         recyclerView.setHasFixedSize(true);
+
+
+
+        c1=root.findViewById(R.id.c1);
+        c2=root.findViewById(R.id.c2);
+        c3=root.findViewById(R.id.c3);
+        c4=root.findViewById(R.id.c4);
+        c5=root.findViewById(R.id.c5);
+        c6=root.findViewById(R.id.c6);
+        c7=root.findViewById(R.id.c7);
+        c8=root.findViewById(R.id.c8);
+        c9=root.findViewById(R.id.c9);
+        c10=root.findViewById(R.id.c10);
+
+        c1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Global.category="Baby Products";
+                navController.navigate(R.id.nav_Shop);
+            }
+        });
+        c2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Global.category="Books & Stationary";
+                navController.navigate(R.id.nav_Shop);
+            }
+        });
+        c3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Global.category="Computer & Accessories";
+                navController.navigate(R.id.nav_Shop);
+            }
+        });
+        c4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Global.category="Fashion and Beauty";
+                navController.navigate(R.id.nav_Shop);
+            }
+        });
+        c5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Global.category="Foods";
+                navController.navigate(R.id.nav_Shop);
+            }
+        });
+        c6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Global.category="Grocery";
+                navController.navigate(R.id.nav_Shop);
+            }
+        });
+        c7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Global.category="Health and Pharma";
+                navController.navigate(R.id.nav_Shop);
+            }
+        });
+        c8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Global.category="Leather Goods";
+                navController.navigate(R.id.nav_Shop);
+            }
+        });
+        c9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Global.category="Mobile Gadget & Accessories";
+                navController.navigate(R.id.nav_Shop);
+            }
+        });
+        c10.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Global.category="Organic Foods";
+                navController.navigate(R.id.nav_Shop);
+            }
+        });
+
 
 
         return root;

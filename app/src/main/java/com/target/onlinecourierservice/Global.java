@@ -44,5 +44,7 @@ public class Global {
     public static String PurThana;
     public static String pMethod;
 
+    public static String category;
+
 
 }

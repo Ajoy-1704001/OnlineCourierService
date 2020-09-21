@@ -17,6 +17,7 @@
                 android:id="@+id/product_image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:scaleType="fitXY"
                 android:src="@drawable/ic_launcher_background"/>
         </LinearLayout>
         <TextView
@@ -29,7 +30,9 @@
             android:textColor="@color/greyDeep"
             android:textStyle="bold"
             android:text="My Product"
-            android:layout_marginStart="8dp" />
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp" />
         <TextView
             android:id="@+id/manufacture"
             android:layout_width="wrap_content"
