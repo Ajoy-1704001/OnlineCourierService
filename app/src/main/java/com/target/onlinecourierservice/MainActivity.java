@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_create_order,R.id.nav_parcel_list,R.id.nav_Shop,R.id.nav_my_order,R.id.nav_faq)
+                R.id.nav_home, R.id.nav_create_order,R.id.nav_parcel_list,R.id.nav_Shop,R.id.nav_my_order)
                 .setDrawerLayout(drawer)
                 .build();
         final NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -78,6 +78,19 @@ public class MainActivity extends AppCompatActivity {
         }
 
         Global.category="All Category";
+
+        navigationView.getMenu().findItem(R.id.nav_faq).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                mAuth.signOut();
+                Intent intent=new Intent(MainActivity.this,UserLoginActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                finish();
+
+                return true;
+            }
+        });
     }
 
     @Override

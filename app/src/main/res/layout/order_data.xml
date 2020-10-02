@@ -119,7 +119,7 @@
                        android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
                        android:id="@+id/status4"
-                       android:text="Deliverd"
+                       android:text="Delivered"
                        android:textSize="13sp"
                        android:textColor="@color/grey"/>
                </LinearLayout>
